@@ -10,7 +10,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="464.0" prefWidth="707.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginViewController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="480.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="707.0" />
@@ -24,17 +23,17 @@
             <Font name="Arial Bold" size="30.0" />
          </font>
       </Label>
-      <JFXTextField focusColor="#0984e3" layoutX="51.0" layoutY="197.0" prefHeight="36.0" prefWidth="290.0" promptText="User Name" style="-fx-color: white;" unFocusColor="#0984e3">
+      <JFXTextField fx:id="txtUserName" focusColor="#0984e3" layoutX="51.0" layoutY="197.0" prefHeight="36.0" prefWidth="290.0" promptText="User Name" style="-fx-color: white;" unFocusColor="#0984e3">
          <font>
             <Font size="14.0" />
          </font>
       </JFXTextField>
-      <JFXPasswordField focusColor="#0984e3" layoutX="51.0" layoutY="265.0" prefHeight="36.0" prefWidth="290.0" promptText="Password" unFocusColor="#0984e3">
+      <JFXPasswordField fx:id="txtPassword" focusColor="#0984e3" layoutX="51.0" layoutY="265.0" prefHeight="36.0" prefWidth="290.0" promptText="Password" unFocusColor="#0984e3">
          <font>
             <Font size="14.0" />
          </font>
       </JFXPasswordField>
-      <JFXButton layoutX="148.0" layoutY="334.0" prefHeight="36.0" prefWidth="96.0" style="-fx-background-color: #0984e3;" text="LOGIN" textFill="WHITE">
+      <JFXButton layoutX="148.0" layoutY="334.0" onAction="#btnLoginOnAction" prefHeight="36.0" prefWidth="96.0" style="-fx-background-color: #0984e3;" text="LOGIN" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
