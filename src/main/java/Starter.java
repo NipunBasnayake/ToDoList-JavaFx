@@ -10,6 +10,8 @@ public class Starter extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/login-view.fxml"))));
+        stage.setTitle("Login - ToDo");
+        stage.setResizable(false);
         stage.show();
     }
 }

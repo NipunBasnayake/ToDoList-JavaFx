@@ -263,7 +263,7 @@ public class TodoViewController implements Initializable {
 
             Stage loginStage = new Stage();
             loginStage.setScene(loginScene);
-            loginStage.setTitle("Login");
+            loginStage.setTitle("Login - ToDo");
             loginStage.setResizable(false);
             loginStage.show();
 

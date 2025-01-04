@@ -69,7 +69,7 @@ public class LoginViewController {
         try {
             Stage stage = new Stage();
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/signup-view.fxml"))));
-            stage.setTitle("ToDO - Sign Up");
+            stage.setTitle("Sign Up - ToDo");
             stage.setResizable(false);
             stage.show();
 

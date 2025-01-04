@@ -76,6 +76,8 @@ public class SignUpViewController {
         Stage stage1 = new Stage();
         try {
             stage1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/login-view.fxml"))));
+            stage1.setTitle("Login - ToDo");
+            stage1.setResizable(false);
             stage1.show();
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
