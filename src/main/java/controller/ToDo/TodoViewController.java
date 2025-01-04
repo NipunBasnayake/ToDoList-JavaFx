@@ -51,6 +51,7 @@ public class TodoViewController implements Initializable {
         }else{
             if (ToDoController.getInstance().addTask(new Todo(
                     1,
+                    1,
                     txtTodoTitle.getText(),
                     txtTotoDesc.getText(),
                     cmbStatus.getValue(),

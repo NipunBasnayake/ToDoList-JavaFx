@@ -25,9 +25,9 @@ public class ToDoController implements ToDoServices {
 
     @Override
     public boolean addTask(Todo todo) {
-        String query = "INSERT INTO tasks (user_id, title, description, status, due_date) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO tasks (user_id, title, description, status, due_date) VALUES (?, ?, ?, ?,?)";
         try (PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(query)) {
-            statement.setInt(1,1);
+            statement.setInt(1,todo.getUserId());
             statement.setString(2, todo.getToDoTitle());
             statement.setString(3, todo.getToDoDescription());
             statement.setString(4, todo.getToDoStatus());
@@ -74,6 +74,7 @@ public class ToDoController implements ToDoServices {
             while (res.next()) {
                 Todo todo = new Todo(
                         res.getInt(1),
+                        res.getInt(2),
                         res.getString(3),
                         res.getString(4),
                         res.getString(5),
@@ -84,7 +85,6 @@ public class ToDoController implements ToDoServices {
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving tasks", e);
         }
-
         return todoList;
     }
 
@@ -97,6 +97,7 @@ public class ToDoController implements ToDoServices {
             while (res.next()) {
                 Todo done = new Todo(
                         res.getInt(1),
+                        res.getInt(2),
                         res.getString(3),
                         res.getString(4),
                         res.getString(5),

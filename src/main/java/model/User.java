@@ -10,11 +10,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 
-public class Todo {
-    private int id;
+public class User {
     private int userId;
-    private String toDoTitle;
-    private String toDoDescription;
-    private String toDoStatus;
-    private String toDodueDate;
+    private String userName;
+    private String password;
 }
