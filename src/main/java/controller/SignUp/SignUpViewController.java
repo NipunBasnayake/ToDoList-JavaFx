@@ -71,7 +71,6 @@ public class SignUpViewController {
         }
     }
 
-
     @FXML
     void loginOnMousePressed(MouseEvent event) {
         Stage stage1 = new Stage();
@@ -87,5 +86,4 @@ public class SignUpViewController {
         Stage stage = (Stage) txtUserName.getScene().getWindow();
         stage.close();
     }
-
 }

@@ -16,17 +16,21 @@ public class LoginController implements LoginServices{
     @Override
     public User authenticateUsernamePassword(String username, String password) {
         try {
-            ResultSet res = DBConnection.getInstance().getConnection().createStatement().executeQuery("SELECT * FROM users WHERE username ='" + username + "' AND password ='" + password + "'");
-            res.next();
-            return new User(
-                    res.getInt("user_id"),
-                    res.getString("username"),
-                    res.getString("password")
-            );
+            ResultSet res = DBConnection.getInstance()
+                    .getConnection()
+                    .createStatement()
+                    .executeQuery("SELECT * FROM users WHERE username ='" + username + "' AND password ='" + password + "'");
+            if (res.next()) {
+                return new User(
+                        res.getInt("user_id"),
+                        res.getString("username"),
+                        res.getString("password")
+                );
+            } else {
+                return null;
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-
-
 }

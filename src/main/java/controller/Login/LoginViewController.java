@@ -30,7 +30,7 @@ public class LoginViewController {
             alert.setTitle("Error");
             alert.setHeaderText("Please enter all the fields");
             alert.show();
-        }else{
+        } else {
             User user = LoginController.getInstance().authenticateUsernamePassword(txtUserName.getText(), txtPassword.getText());
             if (user != null) {
                 Stage stage = new Stage();
@@ -65,7 +65,6 @@ public class LoginViewController {
         }
     }
 
-
     public void signUpOnMousePressed(MouseEvent mouseEvent) {
         try {
             Stage stage = new Stage();
@@ -87,5 +86,4 @@ public class LoginViewController {
             alert.show();
         }
     }
-
 }

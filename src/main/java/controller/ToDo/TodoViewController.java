@@ -1,7 +1,5 @@
 package controller.ToDo;
 
-import controller.Login.LoginController;
-import controller.Login.LoginViewController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,7 +13,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import lombok.Setter;
 import model.Todo;
 import model.User;
 
@@ -118,7 +115,6 @@ public class TodoViewController implements Initializable {
         cmbStatus.setItems(statusList);
     }
 
-
     private void refreshTaskViews() {
         vBoxToDO.getChildren().clear();
         vBoxDone.getChildren().clear();
@@ -174,7 +170,6 @@ public class TodoViewController implements Initializable {
         });
     }
 
-
     private void handleTaskCompletion(Todo todo, CheckBox chkCompleted, HBox taskCard) {
         if (chkCompleted.isSelected()) {
             Alert alertConfirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to mark this as completed?", ButtonType.YES, ButtonType.NO);
@@ -218,12 +213,9 @@ public class TodoViewController implements Initializable {
         taskCard.getStyleClass().add("task-card");
 
         VBox taskDetails = createTaskDetails(todo);
-
         AnchorPane checkboxPane = createCheckboxPane(isDone);
-
         taskCard.getChildren().addAll(taskDetails, checkboxPane);
         VBox.setMargin(taskCard, new Insets(5, 0, 5, 0));
-
         return taskCard;
     }
 
@@ -283,5 +275,4 @@ public class TodoViewController implements Initializable {
             System.err.println("Failed to load the login view: " + e.getMessage());
         }
     }
-
 }

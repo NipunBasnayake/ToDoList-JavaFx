@@ -10,5 +10,4 @@ public interface ToDoServices {
     boolean removeFromDoneList(int id, String status);
     List<Todo> getAllTodoToDO(int userId);
     List<Todo> getAllDone(int userId);
-
 }
