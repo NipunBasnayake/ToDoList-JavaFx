@@ -19,14 +19,9 @@
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="766.0" layoutY="-3.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1222.0" />
         <Rectangle fx:id="lyTodoLayout" arcHeight="5.0" arcWidth="5.0" fill="#28a5ff" height="766.0" layoutX="408.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="408.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0984e3" height="88.0" layoutX="24.0" layoutY="23.0" stroke="TRANSPARENT" strokeType="INSIDE" width="359.0" />
-        <Label fx:id="lblUserName" layoutX="119.0" layoutY="43.0" text="Name" textFill="WHITE">
+        <Label fx:id="lblUserName" layoutX="115.0" layoutY="50.0" text="Name" textFill="WHITE">
             <font>
-                <Font name="System Bold" size="20.0" />
-            </font>
-        </Label>
-        <Label fx:id="lblUserEmail" layoutX="119.0" layoutY="74.0" text="example@gmaill.com" textFill="WHITE">
-            <font>
-                <Font size="14.0" />
+                <Font name="System Bold" size="24.0" />
             </font>
         </Label>
         <ImageView fitHeight="63.0" fitWidth="65.0" layoutX="37.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">

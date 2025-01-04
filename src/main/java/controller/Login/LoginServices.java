@@ -1,6 +1,8 @@
 package controller.Login;
 
+import model.User;
+
 public interface LoginServices {
-    boolean authenticateUsernamePassword(String username, String password);
+    User authenticateUsernamePassword(String username, String password);
 
 }

@@ -1,8 +1,8 @@
 package controller.Login;
 
 import db.DBConnection;
+import model.User;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -14,12 +14,19 @@ public class LoginController implements LoginServices{
     }
 
     @Override
-    public boolean authenticateUsernamePassword(String username, String password) {
+    public User authenticateUsernamePassword(String username, String password) {
         try {
-            return DBConnection.getInstance().getConnection().createStatement().executeQuery("SELECT * FROM users WHERE username ='" + username + "' AND password ='" + password + "'").next();
+            ResultSet res = DBConnection.getInstance().getConnection().createStatement().executeQuery("SELECT * FROM users WHERE username ='" + username + "' AND password ='" + password + "'");
+            res.next();
+            return new User(
+                    res.getInt("user_id"),
+                    res.getString("username"),
+                    res.getString("password")
+            );
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
 
 }

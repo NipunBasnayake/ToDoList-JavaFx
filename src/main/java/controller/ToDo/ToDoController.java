@@ -66,9 +66,9 @@ public class ToDoController implements ToDoServices {
     }
 
     @Override
-    public List<Todo> getAllTodoToDO() {
+    public List<Todo> getAllTodoToDO(int userId) {
         List<Todo> todoList = new ArrayList<>();
-        String query = "SELECT * FROM tasks WHERE status='Pending' OR status='In Progress'";
+        String query = "SELECT * FROM tasks WHERE (status='Pending' OR status='In Progress') AND user_id='" + userId + "'";
 
         try (ResultSet res = DBConnection.getInstance().getConnection().createStatement().executeQuery(query)) {
             while (res.next()) {
@@ -89,9 +89,9 @@ public class ToDoController implements ToDoServices {
     }
 
     @Override
-    public List<Todo> getAllDone() {
+    public List<Todo> getAllDone(int userId) {
         List<Todo> doneList = new ArrayList<>();
-        String query = "SELECT * FROM tasks WHERE status='Completed'";
+        String query = "SELECT * FROM tasks WHERE status='Completed' AND user_id='" + userId + "'";
 
         try (ResultSet res = DBConnection.getInstance().getConnection().createStatement().executeQuery(query)) {
             while (res.next()) {
@@ -108,7 +108,6 @@ public class ToDoController implements ToDoServices {
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving completed tasks", e);
         }
-
         return doneList;
     }
 }
