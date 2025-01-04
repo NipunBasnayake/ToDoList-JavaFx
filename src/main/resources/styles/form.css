@@ -1,62 +1,24 @@
-/* General Styling */
-.root {
-    -fx-font-family: "Arial";
-    -fx-background-color: white;
-    -fx-padding: 20;
-}
-
-/* ComboBox Styling */
 .combo-box {
     -fx-background-color: white;
     -fx-border-width: 1.5;
-    -fx-border-color: #0984e3;
+    -fx-border-color: #28a5ff;
     -fx-border-radius: 5px;
     -fx-font-size: 16px;
-    /*-fx-prompt-text-fill: #0984e3;*/
 }
 
-/* TextField Styling */
 .text-field {
     -fx-background-color: white;
     -fx-border-width: 1.5;
-    -fx-border-color: #0984e3;
+    -fx-border-color: #28a5ff;
     -fx-border-radius: 5px;
     -fx-font-size: 16px;
 }
 
-/* TextArea Styling */
 .text-area {
     -fx-background-color: white;
     -fx-border-width: 1.5;
-    -fx-border-color: #0984e3;
+    -fx-border-color: #28a5ff;
     -fx-border-radius: 5px;
     -fx-font-size: 16px;
 }
 
-/* DatePicker Styling */
-.date-picker {
-
-}
-
-.date-picker .arrow {
-
-}
-
-.date-picker .text {
-
-}
-
-/* Button Styling */
-.button {
-    -fx-border-radius: 5px;
-    -fx-padding: 5px;
-    -fx-text-fill: white;
-}
-
-.button:hover {
-    -fx-background-color: #0ab2ff;
-}
-
-.button:pressed {
-    -fx-background-color: #086f9b;
-}

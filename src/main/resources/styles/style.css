@@ -1,38 +1,56 @@
+#listViewToDo {
+    -fx-background-color: #28a5ff;
+    -fx-control-inner-background: #28a5ff;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-text-fill: black;
+}
+
+#listViewDone {
+    -fx-background-color: #54bbff;
+    -fx-control-inner-background: #54bbff;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-text-fill: black;
+}
+
 .task-card {
-    -fx-background-color: #ffffff;
-    -fx-border-radius: 10px;
-    -fx-padding: 15px;
+    -fx-background-color: white;
     -fx-border-color: #ddd;
     -fx-border-width: 1px;
-    -fx-spacing: 10px;
-    -fx-alignment: center-left;
-    -fx-background-radius: 10px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-pref-width: 370px;
+    -fx-padding: 12px;
 }
 
 .task-details {
+    -fx-padding: 8px;
     -fx-spacing: 5px;
-    -fx-padding: 0 5px;
-    -fx-alignment: top-left;
 }
 
 .task-title {
-    -fx-font-size: 16px;
+    -fx-font-size: 18px;
     -fx-font-weight: bold;
     -fx-text-fill: #333;
 }
 
 .task-description {
     -fx-font-size: 14px;
-    -fx-text-fill: #555;
+    -fx-text-fill: #666;
+    -fx-line-spacing: 1.5;
 }
 
 .task-date {
     -fx-font-size: 12px;
-    -fx-text-fill: #888;
+    -fx-text-fill: #999;
+    -fx-font-style: italic;
 }
 
 .checkbox-status {
-    -fx-alignment: center-right;
-    -fx-padding: 0 10px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-pref-width: 100px;
+    -fx-text-fill: #0984e3;
+    -fx-font-weight: bold;
 }
 

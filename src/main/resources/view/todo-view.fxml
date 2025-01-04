@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import java.net.URL?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -9,62 +11,80 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="759.0" prefWidth="1166.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ToDo.TodoViewController">
+<AnchorPane prefHeight="759.0" prefWidth="1166.0" stylesheets="@../styles/style.css"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.ToDo.TodoViewController">
     <children>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="766.0" layoutY="-3.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1222.0" />
-        <Rectangle fx:id="lyTodoLayout" arcHeight="5.0" arcWidth="5.0" fill="#28a5ff" height="766.0" layoutX="408.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="408.0" />
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0984e3" height="88.0" layoutX="24.0" layoutY="23.0" stroke="TRANSPARENT" strokeType="INSIDE" width="359.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="766.0" layoutY="-3.0" stroke="TRANSPARENT"
+                   strokeType="INSIDE" width="1222.0"/>
+        <Rectangle fx:id="lyTodoLayout" arcHeight="5.0" arcWidth="5.0" fill="#28a5ff" height="766.0" layoutX="408.0"
+                   layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="408.0"/>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0984e3" height="88.0" layoutX="24.0" layoutY="23.0"
+                   stroke="TRANSPARENT" strokeType="INSIDE" width="359.0"/>
         <Label fx:id="lblUserName" layoutX="115.0" layoutY="50.0" text="Name" textFill="WHITE">
             <font>
-                <Font name="System Bold" size="24.0" />
+                <Font name="System Bold" size="24.0"/>
             </font>
         </Label>
-        <ImageView fitHeight="63.0" fitWidth="65.0" layoutX="37.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="63.0" fitWidth="65.0" layoutX="37.0" layoutY="36.0" pickOnBounds="true"
+                   preserveRatio="true">
             <image>
-                <Image url="@../images/UserAvatar.png" />
+                <Image url="@../images/UserAvatar.png"/>
             </image>
         </ImageView>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#54bbff" height="766.0" layoutX="815.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="408.0" />
-        <DatePicker fx:id="txtDueDate" layoutX="26.0" layoutY="456.0" prefHeight="42.0" prefWidth="359.0" promptText="Set a Due Date" stylesheets="@../styles/form.css" />
-        <TextField fx:id="txtTodoTitle" layoutX="25.0" layoutY="217.0" prefHeight="42.0" prefWidth="359.0" promptText="ToDo Title" stylesheets="@../styles/form.css" />
-        <TextArea fx:id="txtTotoDesc" layoutX="26.0" layoutY="276.0" prefHeight="102.0" prefWidth="359.0" promptText="ToDo Description" stylesheets="@../styles/form.css" />
-        <ComboBox fx:id="cmbStatus" layoutX="26.0" layoutY="396.0" prefHeight="42.0" prefWidth="359.0" promptText="Select ToDo Status" stylesheets="@../styles/form.css" />
-        <JFXButton layoutX="26.0" layoutY="522.0" onAction="#btnAddToDoOnAction" prefHeight="43.0" prefWidth="359.0" style="-fx-background-color: #0984e3;" stylesheets="@../styles/form.css" text="Add ToDo">
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#54bbff" height="766.0" layoutX="815.0" layoutY="-2.0"
+                   stroke="TRANSPARENT" strokeType="INSIDE" width="408.0"/>
+        <DatePicker fx:id="txtDueDate" layoutX="26.0" layoutY="473.0" prefHeight="42.0" prefWidth="359.0"
+                    promptText="Set a Due Date">
+            <stylesheets>
+                <URL value="@../styles/style.css"/>
+                <URL value="@../styles/form.css"/>
+            </stylesheets>
+        </DatePicker>
+        <TextField fx:id="txtTodoTitle" layoutX="25.0" layoutY="234.0" prefHeight="42.0" prefWidth="359.0"
+                   promptText="ToDo Title" stylesheets="@../styles/form.css"/>
+        <TextArea fx:id="txtTotoDesc" layoutX="26.0" layoutY="293.0" prefHeight="102.0" prefWidth="359.0"
+                  promptText="ToDo Description" stylesheets="@../styles/form.css"/>
+        <ComboBox fx:id="cmbStatus" layoutX="26.0" layoutY="413.0" prefHeight="42.0" prefWidth="359.0"
+                  promptText="Select ToDo Status" stylesheets="@../styles/form.css"/>
+        <JFXButton layoutX="26.0" layoutY="547.0" onAction="#btnAddToDoOnAction" prefHeight="43.0" prefWidth="359.0"
+                   style="-fx-background-color: #0984e3;" text="Add ToDo" textFill="WHITE">
             <font>
-                <Font name="System Bold" size="18.0" />
+                <Font name="System Bold" size="18.0"/>
             </font>
         </JFXButton>
-
-        <VBox fx:id="vBoxDone" layoutX="825.0" layoutY="60.0" prefHeight="692.0" prefWidth="388.0" />
-          <VBox fx:id="vBoxToDO" layoutX="417.0" layoutY="61.0" prefHeight="692.0" prefWidth="388.0" style="-fx-background-color: #28a5ff;" />
-      <Label layoutX="583.0" layoutY="19.0" text="ToDo" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="23.0" />
-         </font>
-      </Label>
-      <Label layoutX="991.0" layoutY="19.0" text="Done" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="23.0" />
-         </font>
-      </Label>
-      <JFXButton layoutX="25.0" layoutY="694.0" onAction="#btnLogOutOnAction" prefHeight="43.0" prefWidth="359.0" style="-fx-background-color: #c0392b;" text="Logout" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </JFXButton>
-      <Label layoutX="26.0" layoutY="138.0" prefHeight="21.0" prefWidth="359.0" text="Fill in the fields below to add a new task.">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="26.0" layoutY="165.0" prefHeight="21.0" prefWidth="346.0" text="Ensure all details are correct before submission.">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
+        <Label layoutX="583.0" layoutY="19.0" text="ToDo" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="23.0"/>
+            </font>
+        </Label>
+        <Label layoutX="991.0" layoutY="19.0" text="Done" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="23.0"/>
+            </font>
+        </Label>
+        <JFXButton layoutX="25.0" layoutY="694.0" onAction="#btnLogOutOnAction" prefHeight="43.0" prefWidth="359.0"
+                   style="-fx-background-color: #c0392b;" text="Logout" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="14.0"/>
+            </font>
+        </JFXButton>
+        <Label layoutX="26.0" layoutY="155.0" prefHeight="21.0" prefWidth="359.0"
+               text="Fill in the fields below to add a new task.">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Label>
+        <Label layoutX="26.0" layoutY="182.0" prefHeight="21.0" prefWidth="346.0"
+               text="Ensure all details are correct before submission.">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Label>
+        <JFXListView fx:id="listViewToDo" layoutX="411.0" layoutY="61.0" prefHeight="702.0" prefWidth="400.0"/>
+        <JFXListView fx:id="listViewDone" layoutX="819.0" layoutY="61.0" prefHeight="702.0" prefWidth="400.0"/>
     </children>
 </AnchorPane>

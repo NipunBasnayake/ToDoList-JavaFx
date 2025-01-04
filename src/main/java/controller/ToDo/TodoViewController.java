@@ -1,5 +1,6 @@
 package controller.ToDo;
 
+import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +24,8 @@ import java.util.ResourceBundle;
 
 public class TodoViewController implements Initializable {
 
+    public JFXListView<HBox> listViewToDo;
+    public JFXListView<HBox> listViewDone;
     private User user;
 
     @FXML
@@ -43,11 +46,6 @@ public class TodoViewController implements Initializable {
     @FXML
     private TextArea txtTotoDesc;
 
-    @FXML
-    private VBox vBoxDone;
-
-    @FXML
-    private VBox vBoxToDO;
 
     @FXML
     void btnAddToDoOnAction(ActionEvent event) {
@@ -116,8 +114,8 @@ public class TodoViewController implements Initializable {
     }
 
     private void refreshTaskViews() {
-        vBoxToDO.getChildren().clear();
-        vBoxDone.getChildren().clear();
+        listViewToDo.getItems().clear();
+        listViewDone.getItems().clear();
         loadTasks();
     }
 
@@ -129,7 +127,7 @@ public class TodoViewController implements Initializable {
     private void loadToDoTasks() {
         ToDoController.getInstance().getAllTodoToDO(user.getUserId()).forEach(todo -> {
             HBox taskCard = createTaskCard(todo, false);
-            vBoxToDO.getChildren().add(taskCard);
+            listViewToDo.getItems().add(taskCard);
             CheckBox chkCompleted = (CheckBox) ((AnchorPane) taskCard.getChildren().get(1)).getChildren().get(0);
             chkCompleted.setOnAction(actionEvent -> handleTaskCompletion(todo, chkCompleted, taskCard));
         });
@@ -138,7 +136,7 @@ public class TodoViewController implements Initializable {
     private void loadDoneTasks() {
         ToDoController.getInstance().getAllDone(user.getUserId()).forEach(todo -> {
             HBox taskCard = createTaskCard(todo, true);
-            vBoxDone.getChildren().add(taskCard);
+            listViewDone.getItems().add(taskCard);
             CheckBox chkPending = (CheckBox) ((AnchorPane) taskCard.getChildren().get(1)).getChildren().get(0);
             CheckBox chkInProgress = (CheckBox) ((AnchorPane) taskCard.getChildren().get(1)).getChildren().get(1);
 
@@ -177,7 +175,7 @@ public class TodoViewController implements Initializable {
             ButtonType buttonType = result.orElse(ButtonType.NO);
             if (buttonType == ButtonType.YES) {
                 if (ToDoController.getInstance().addToDoneList(todo.getId())) {
-                    vBoxToDO.getChildren().remove(taskCard);
+                    listViewToDo.getItems().remove(taskCard);
                     addTaskToDoneList(todo);
                     refreshTaskViews();
                 } else {
@@ -189,7 +187,7 @@ public class TodoViewController implements Initializable {
 
     private void handleRevertToDoStatus(Todo todo, String status, HBox taskCard) {
         if (ToDoController.getInstance().removeFromDoneList(todo.getId(), status)) {
-            vBoxDone.getChildren().remove(taskCard);
+            listViewDone.getItems().remove(taskCard);
             addTaskToToDoList(todo);
             refreshTaskViews();
         } else {
@@ -199,12 +197,12 @@ public class TodoViewController implements Initializable {
 
     private void addTaskToDoneList(Todo todo) {
         HBox taskCard = createTaskCard(todo, true);
-        vBoxDone.getChildren().add(taskCard);
+        listViewDone.getItems().add(taskCard);
     }
 
     private void addTaskToToDoList(Todo todo) {
         HBox taskCard = createTaskCard(todo, false);
-        vBoxToDO.getChildren().add(taskCard);
+        listViewToDo.getItems().add(taskCard);
     }
 
     private HBox createTaskCard(Todo todo, boolean isDone) {
@@ -238,19 +236,23 @@ public class TodoViewController implements Initializable {
 
     private AnchorPane createCheckboxPane(boolean isDone) {
         AnchorPane checkboxPane = new AnchorPane();
-        checkboxPane.setPrefWidth(150);
+        checkboxPane.setPrefWidth(180);
+
+        final double RIGHT_ANCHOR = 5.0;
+        final double TOP_ANCHOR = 15.0;
+        final double SPACING = 30.0;
 
         CheckBox chkStatus = new CheckBox(isDone ? "Pending" : "Completed");
         chkStatus.getStyleClass().add("checkbox-status");
-        AnchorPane.setRightAnchor(chkStatus, 10.0);
-        AnchorPane.setTopAnchor(chkStatus, 10.0);
+        AnchorPane.setRightAnchor(chkStatus, RIGHT_ANCHOR);
+        AnchorPane.setTopAnchor(chkStatus, TOP_ANCHOR);
         checkboxPane.getChildren().add(chkStatus);
 
         if (isDone) {
             CheckBox chkInProgress = new CheckBox("In Progress");
             chkInProgress.getStyleClass().add("checkbox-status");
-            AnchorPane.setRightAnchor(chkInProgress, 10.0);
-            AnchorPane.setTopAnchor(chkInProgress, 50.0);
+            AnchorPane.setRightAnchor(chkInProgress, RIGHT_ANCHOR);
+            AnchorPane.setTopAnchor(chkInProgress, TOP_ANCHOR + SPACING);
             checkboxPane.getChildren().add(chkInProgress);
         }
         return checkboxPane;
