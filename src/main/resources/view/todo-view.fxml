@@ -4,7 +4,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -30,20 +29,42 @@
             </image>
         </ImageView>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#54bbff" height="766.0" layoutX="815.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="408.0" />
-        <DatePicker fx:id="txtDueDate" layoutX="25.0" layoutY="433.0" prefHeight="42.0" prefWidth="359.0" promptText="Set a Due Date" stylesheets="@../styles/form.css" />
-        <TextField fx:id="txtTodoTitle" layoutX="24.0" layoutY="160.0" prefHeight="42.0" prefWidth="359.0" promptText="ToDo Title" stylesheets="@../styles/form.css" />
-        <TextArea fx:id="txtTotoDesc" layoutX="24.0" layoutY="231.0" prefHeight="102.0" prefWidth="359.0" promptText="ToDo Description" stylesheets="@../styles/form.css" />
-        <ComboBox fx:id="cmbStatus" layoutX="25.0" layoutY="363.0" prefHeight="42.0" prefWidth="359.0" promptText="Select ToDo Status" stylesheets="@../styles/form.css" />
-        <JFXButton layoutX="78.0" layoutY="518.0" onAction="#btnAddToDoOnAction" prefHeight="43.0" prefWidth="252.0" style="-fx-background-color: #0984e3;" stylesheets="@../styles/form.css" text="Add ToDo">
+        <DatePicker fx:id="txtDueDate" layoutX="26.0" layoutY="456.0" prefHeight="42.0" prefWidth="359.0" promptText="Set a Due Date" stylesheets="@../styles/form.css" />
+        <TextField fx:id="txtTodoTitle" layoutX="25.0" layoutY="217.0" prefHeight="42.0" prefWidth="359.0" promptText="ToDo Title" stylesheets="@../styles/form.css" />
+        <TextArea fx:id="txtTotoDesc" layoutX="26.0" layoutY="276.0" prefHeight="102.0" prefWidth="359.0" promptText="ToDo Description" stylesheets="@../styles/form.css" />
+        <ComboBox fx:id="cmbStatus" layoutX="26.0" layoutY="396.0" prefHeight="42.0" prefWidth="359.0" promptText="Select ToDo Status" stylesheets="@../styles/form.css" />
+        <JFXButton layoutX="26.0" layoutY="522.0" onAction="#btnAddToDoOnAction" prefHeight="43.0" prefWidth="359.0" style="-fx-background-color: #0984e3;" stylesheets="@../styles/form.css" text="Add ToDo">
             <font>
-                <Font name="System Bold" size="14.0" />
+                <Font name="System Bold" size="18.0" />
             </font>
         </JFXButton>
 
-              <!-- ScrollPane for vBoxToDO -->
-        <ScrollPane fitToWidth="true" layoutX="464.0" layoutY="25.0" prefHeight="721.0" prefWidth="311.0" style="-fx-background-color: #28a5ff;" />
-
-        <VBox fx:id="vBoxDone" layoutX="830.0" layoutY="13.0" prefHeight="739.0" prefWidth="380.0" />
-          <VBox fx:id="vBoxToDO" layoutX="417.0" layoutY="9.0" prefHeight="746.0" prefWidth="388.0" style="-fx-background-color: #28a5ff;" />
+        <VBox fx:id="vBoxDone" layoutX="825.0" layoutY="60.0" prefHeight="692.0" prefWidth="388.0" />
+          <VBox fx:id="vBoxToDO" layoutX="417.0" layoutY="61.0" prefHeight="692.0" prefWidth="388.0" style="-fx-background-color: #28a5ff;" />
+      <Label layoutX="583.0" layoutY="19.0" text="ToDo" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="991.0" layoutY="19.0" text="Done" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="25.0" layoutY="694.0" onAction="#btnLogOutOnAction" prefHeight="43.0" prefWidth="359.0" style="-fx-background-color: #c0392b;" text="Logout" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="26.0" layoutY="138.0" prefHeight="21.0" prefWidth="359.0" text="Fill in the fields below to add a new task.">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="26.0" layoutY="165.0" prefHeight="21.0" prefWidth="346.0" text="Ensure all details are correct before submission.">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

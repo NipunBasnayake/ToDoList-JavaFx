@@ -6,17 +6,22 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import lombok.Setter;
 import model.Todo;
 import model.User;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class TodoViewController implements Initializable {
@@ -54,12 +59,20 @@ public class TodoViewController implements Initializable {
             if (ToDoController.getInstance().addTask(todo)) {
                 showAlert(Alert.AlertType.INFORMATION, "Todo Added Successfully!");
                 refreshTaskViews();
+                clearFields();
             } else {
                 showAlert(Alert.AlertType.ERROR, "Error occurred when adding ToDo.");
             }
         } else {
             showAlert(Alert.AlertType.ERROR, "Please fill all the fields to add a ToDo!");
         }
+    }
+
+    public void clearFields() {
+        txtDueDate.setValue(null);
+        txtTodoTitle.clear();
+        txtTotoDesc.clear();
+        cmbStatus.getItems().clear();
     }
 
     private boolean isInputValid() {
@@ -133,19 +146,48 @@ public class TodoViewController implements Initializable {
             CheckBox chkPending = (CheckBox) ((AnchorPane) taskCard.getChildren().get(1)).getChildren().get(0);
             CheckBox chkInProgress = (CheckBox) ((AnchorPane) taskCard.getChildren().get(1)).getChildren().get(1);
 
-            chkPending.setOnAction(actionEvent -> handleRevertToDoStatus(todo, "Pending", taskCard));
-            chkInProgress.setOnAction(actionEvent -> handleRevertToDoStatus(todo, "In Progress", taskCard));
+            // Pending checkbox
+            chkPending.setOnAction(actionEvent -> {
+                Alert alertConfirmation = new Alert(Alert.AlertType.CONFIRMATION,
+                        "Are you sure you want to mark this as Pending?", ButtonType.YES, ButtonType.NO);
+                Optional<ButtonType> result = alertConfirmation.showAndWait();
+                ButtonType buttonType = result.orElse(ButtonType.NO);
+                if (buttonType == ButtonType.YES) {
+                    handleRevertToDoStatus(todo, "Pending", taskCard);
+                } else {
+                    chkPending.setSelected(false);
+                }
+            });
+
+            // In Progress checkbox
+            chkInProgress.setOnAction(actionEvent -> {
+                Alert alertConfirmation = new Alert(Alert.AlertType.CONFIRMATION,
+                        "Are you sure you want to mark this as In Progress?", ButtonType.YES, ButtonType.NO);
+                Optional<ButtonType> result = alertConfirmation.showAndWait();
+                ButtonType buttonType = result.orElse(ButtonType.NO);
+                if (buttonType == ButtonType.YES) {
+                    handleRevertToDoStatus(todo, "In Progress", taskCard);
+                } else {
+                    chkInProgress.setSelected(false);
+                }
+            });
         });
     }
 
+
     private void handleTaskCompletion(Todo todo, CheckBox chkCompleted, HBox taskCard) {
         if (chkCompleted.isSelected()) {
-            if (ToDoController.getInstance().addToDoneList(todo.getId())) {
-                vBoxToDO.getChildren().remove(taskCard);
-                addTaskToDoneList(todo);
-                refreshTaskViews();
-            } else {
-                showAlert(Alert.AlertType.ERROR, "Error occurred when updating task status.");
+            Alert alertConfirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to mark this as completed?", ButtonType.YES, ButtonType.NO);
+            Optional<ButtonType> result = alertConfirmation.showAndWait();
+            ButtonType buttonType = result.orElse(ButtonType.NO);
+            if (buttonType == ButtonType.YES) {
+                if (ToDoController.getInstance().addToDoneList(todo.getId())) {
+                    vBoxToDO.getChildren().remove(taskCard);
+                    addTaskToDoneList(todo);
+                    refreshTaskViews();
+                } else {
+                    showAlert(Alert.AlertType.ERROR, "Error occurred when updating task status.");
+                }
             }
         }
     }
@@ -208,18 +250,38 @@ public class TodoViewController implements Initializable {
 
         CheckBox chkStatus = new CheckBox(isDone ? "Pending" : "Completed");
         chkStatus.getStyleClass().add("checkbox-status");
-        AnchorPane.setTopAnchor(chkStatus, 30.0);
-        AnchorPane.setLeftAnchor(chkStatus, 10.0);
+        AnchorPane.setRightAnchor(chkStatus, 10.0);
+        AnchorPane.setTopAnchor(chkStatus, 10.0);
         checkboxPane.getChildren().add(chkStatus);
 
         if (isDone) {
             CheckBox chkInProgress = new CheckBox("In Progress");
             chkInProgress.getStyleClass().add("checkbox-status");
-            AnchorPane.setTopAnchor(chkInProgress, 60.0);
-            AnchorPane.setLeftAnchor(chkInProgress, 10.0);
+            AnchorPane.setRightAnchor(chkInProgress, 10.0);
+            AnchorPane.setTopAnchor(chkInProgress, 50.0);
             checkboxPane.getChildren().add(chkInProgress);
         }
-
         return checkboxPane;
     }
+
+    public void btnLogOutOnAction(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login-view.fxml"));
+            Scene loginScene = new Scene(loader.load());
+
+            Stage loginStage = new Stage();
+            loginStage.setScene(loginScene);
+            loginStage.setTitle("Login");
+            loginStage.setResizable(false);
+            loginStage.show();
+
+            Stage currentStage = (Stage) txtTotoDesc.getScene().getWindow();
+            if (currentStage != null) {
+                currentStage.close();
+            }
+        } catch (IOException e) {
+            System.err.println("Failed to load the login view: " + e.getMessage());
+        }
+    }
+
 }
