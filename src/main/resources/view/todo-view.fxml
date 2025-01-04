@@ -1,14 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.TodoViewController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="759.0" prefWidth="1166.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ToDo.TodoViewController">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="766.0" layoutY="-3.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1222.0" />
+        <Rectangle fx:id="lyTodoLayout" arcHeight="5.0" arcWidth="5.0" fill="#28a5ff" height="766.0" layoutX="408.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="408.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0984e3" height="88.0" layoutX="24.0" layoutY="23.0" stroke="TRANSPARENT" strokeType="INSIDE" width="359.0" />
+        <Label fx:id="lblUserName" layoutX="119.0" layoutY="43.0" text="Name" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <Label fx:id="lblUserEmail" layoutX="119.0" layoutY="74.0" text="example@gmaill.com" textFill="WHITE">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="63.0" fitWidth="65.0" layoutX="37.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/UserAvatar.png" />
+            </image>
+        </ImageView>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#54bbff" height="766.0" layoutX="815.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="408.0" />
+        <DatePicker fx:id="txtDueDate" layoutX="25.0" layoutY="433.0" prefHeight="42.0" prefWidth="359.0" promptText="Set a Due Date" stylesheets="@../styles/form.css" />
+        <TextField fx:id="txtTodoTitle" layoutX="24.0" layoutY="160.0" prefHeight="42.0" prefWidth="359.0" promptText="ToDo Title" stylesheets="@../styles/form.css" />
+        <TextArea fx:id="txtTotoDesc" layoutX="24.0" layoutY="231.0" prefHeight="102.0" prefWidth="359.0" promptText="ToDo Description" stylesheets="@../styles/form.css" />
+        <ComboBox fx:id="cmbStatus" layoutX="25.0" layoutY="363.0" prefHeight="42.0" prefWidth="359.0" promptText="Select ToDo Status" stylesheets="@../styles/form.css" />
+        <JFXButton layoutX="78.0" layoutY="518.0" onAction="#btnAddToDoOnAction" prefHeight="43.0" prefWidth="252.0" style="-fx-background-color: #0984e3;" stylesheets="@../styles/form.css" text="Add ToDo">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </JFXButton>
 
+              <!-- ScrollPane for vBoxToDO -->
+        <ScrollPane fitToWidth="true" layoutX="464.0" layoutY="25.0" prefHeight="721.0" prefWidth="311.0" style="-fx-background-color: #28a5ff;" />
+
+        <VBox fx:id="vBoxDone" layoutX="830.0" layoutY="13.0" prefHeight="739.0" prefWidth="380.0" />
+          <VBox fx:id="vBoxToDO" layoutX="417.0" layoutY="9.0" prefHeight="746.0" prefWidth="388.0" style="-fx-background-color: #28a5ff;" />
+    </children>
 </AnchorPane>

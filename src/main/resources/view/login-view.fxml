@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="464.0" prefWidth="707.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginViewController">
+<AnchorPane prefHeight="464.0" prefWidth="707.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Login.LoginViewController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="480.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="707.0" />
       <ImageView fitHeight="375.0" fitWidth="368.0" layoutX="327.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">

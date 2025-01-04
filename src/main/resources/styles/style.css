@@ -1,0 +1,38 @@
+.task-card {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 10px;
+    -fx-padding: 15px;
+    -fx-border-color: #ddd;
+    -fx-border-width: 1px;
+    -fx-spacing: 10px;
+    -fx-alignment: center-left;
+    -fx-background-radius: 10px;
+}
+
+.task-details {
+    -fx-spacing: 5px;
+    -fx-padding: 0 5px;
+    -fx-alignment: top-left;
+}
+
+.task-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+.task-description {
+    -fx-font-size: 14px;
+    -fx-text-fill: #555;
+}
+
+.task-date {
+    -fx-font-size: 12px;
+    -fx-text-fill: #888;
+}
+
+.checkbox-status {
+    -fx-alignment: center-right;
+    -fx-padding: 0 10px;
+}
+
