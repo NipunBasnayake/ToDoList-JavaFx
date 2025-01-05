@@ -55,6 +55,7 @@ public class TodoViewController implements Initializable {
                 showAlert(Alert.AlertType.INFORMATION, "Todo Added Successfully!");
                 refreshTaskViews();
                 clearFields();
+                loadComboBox();
             } else {
                 showAlert(Alert.AlertType.ERROR, "Error occurred when adding ToDo.");
             }
@@ -108,7 +109,10 @@ public class TodoViewController implements Initializable {
             lblUserName.setText(user.getUserName());
             refreshTaskViews();
         }
+        loadComboBox();
+    }
 
+    private void loadComboBox(){
         ObservableList<String> statusList = FXCollections.observableArrayList("Pending", "In Progress");
         cmbStatus.setItems(statusList);
     }
